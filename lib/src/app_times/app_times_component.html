@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        <h1 class="text-muted mx-auto py-2 text-center">Sistema de Cadastro de Times de Futebol!</h1>
+    </div>
+</div>
+
+<div class="container container-small">
+    <form>
+        <div class="form-row">
+            <div class="form-group col">
+                <label class="text-info" for="nome">Nome</label>
+                <input class="form-control" type="text" name="nome" id="nome" placeholder="Digite o nome do time"
+                #nome required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="text-info" for="estado">Estado</label>
+                <input class="form-control" type="text" name="estado" id="estado" placeholder="Digite o estado"
+                #estado required>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="text-info" for="ano">Ano de formação</label>
+                <input class="form-control" type="number" name="ano" id="ano" placeholder="Digite o ano"
+                #ano required>
+            </div>
+        </div>
+        <button class="btn btn-info btn-block mb-5" 
+        (click)="adicionarTime(nome.value, estado.value, ano.value); nome.value=''; estado.value=''; ano.value='';" 
+        >Cadastrar time</button>
+    </form>
+</div>
+
+<div class="container container-medium mt-4">
+    <table class="table mb-4 rounded">
+        <thead class="bg-info text-light">
+            <tr>
+                <th>Nome do time</th>
+                <th>Estado</th>
+                <th>Ano</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let time of times; let $i = index">
+            <tr>
+                <td>{{time.nome}}</td>
+                <td>{{time.estado}}</td>
+                <td>{{time.ano}}</td>
+                <td class="icon"><a href="#" (click)="removerTime($i)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table">
+        <thead class="bg-info text-light text-center">
+            <tr>
+                <th>Número de times</th>
+                <th>Time mais antigo</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr>
+                <td>{{times.length}}</td>
+                <td *ngIf="times.isNotEmpty">{{maisVelho.nome}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

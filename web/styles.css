@@ -1,0 +1,19 @@
+.container-small{
+    margin: auto;
+    max-width: 50%;
+}
+
+.container-medium{
+    margin: auto;
+    max-width: 70%;
+}
+
+.table td.icon{
+    border: none;
+}
+
+.table td.icon a i{
+    text-decoration: none;
+    color: black;
+    display: inline;
+}
